@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Survey from "./Survey";
 
 test("Mostrar una pregunta a la vez", () => {
@@ -42,4 +42,29 @@ test("Cada pregunta tiene opciones de valoración del 1 al 5", () => {
   expect(screen.getByRole("radio", { name: "3" })).not.toBeChecked();
   expect(screen.getByRole("radio", { name: "4" })).not.toBeChecked();
   expect(screen.getByRole("radio", { name: "5" })).not.toBeChecked();
+});
+
+test("Mostrar la siguiente pregunta después de que el usuario haya respondido la actual", () => {
+  const questions = [
+    {
+      id: 1,
+      texto: "¿Qué tan satisfecho estás con el producto?",
+    },
+    {
+      id: 2,
+      texto: "¿Cuál es tu opinión sobre el servicio al cliente?",
+    },
+  ];
+
+  render(<Survey questions={questions} />);
+
+  fireEvent.click(screen.getByRole("radio", { name: "3" }));
+
+  expect(screen.getByRole("radio", { name: "1" })).not.toBeChecked();
+  expect(screen.getByRole("radio", { name: "2" })).not.toBeChecked();
+  expect(screen.getByRole("radio", { name: "3" })).toBeChecked();
+  expect(screen.getByRole("radio", { name: "4" })).not.toBeChecked();
+  expect(screen.getByRole("radio", { name: "5" })).not.toBeChecked();
+
+  screen.getByText("¿Cuál es tu opinión sobre el servicio al cliente?");
 });
