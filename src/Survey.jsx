@@ -1,4 +1,4 @@
-import Votes from "./Votes";
+import Votes from "./mui/Votes";
 import SurveySummary from "./SurveySummary";
 import useQuestions from "./useQuestions";
 
@@ -8,8 +8,19 @@ function Survey({ questions, renderAnsweredQuestion }) {
   if (currentQuestion) {
     return (
       <div className="survey">
-        <div>{currentQuestion.texto}</div>
-        <Votes onClick={answerQuestion} />
+        {questions.map((question, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                display: currentQuestion.id === question.id ? "block" : "none",
+              }}
+            >
+              <div>{question.texto}</div>
+              <Votes onClick={answerQuestion} />
+            </div>
+          );
+        })}
       </div>
     );
   }
