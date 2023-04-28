@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import Survey from "./Survey";
 
 test("Mostrar una pregunta a la vez", () => {
@@ -80,8 +80,6 @@ test("Al finalizar la encuesta, mostrar un resumen con las respuestas del usuari
       texto: "¿Cuál es tu opinión sobre el servicio al cliente?",
     },
   ];
-
-  let actualSurveyResults = null;
 
   render(
     <Survey
