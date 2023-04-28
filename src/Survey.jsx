@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Votes from "./Votes";
+import SurveySummary from "./SurveySummary";
 
 function Survey({ questions, renderAnsweredQuestion }) {
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -12,11 +13,10 @@ function Survey({ questions, renderAnsweredQuestion }) {
     ]);
   if (!currentQuestion) {
     return (
-      <div>
-        {answeredQuestions.map((answeredQuestions, index) => (
-          <div key={index}>{renderAnsweredQuestion(answeredQuestions)}</div>
-        ))}
-      </div>
+      <SurveySummary
+        answeredQuestions={answeredQuestions}
+        renderAnsweredQuestion={renderAnsweredQuestion}
+      />
     );
   }
   return (
