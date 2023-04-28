@@ -4,12 +4,13 @@ import Votes from "./Votes";
 function Survey({ questions, renderAnsweredQuestion }) {
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const currentIndexQuestion = answeredQuestions.length;
+  const currentQuestion = questions[currentIndexQuestion];
   const answerQuestion = (vote) =>
     setAnsweredQuestions((answeredQuestions) => [
       ...answeredQuestions,
-      { vote, question: questions[currentIndexQuestion] },
+      { vote, question: currentQuestion },
     ]);
-  if (!questions[currentIndexQuestion]) {
+  if (!currentQuestion) {
     return (
       <div>
         {answeredQuestions.map((answeredQuestions, index) => (
@@ -20,7 +21,7 @@ function Survey({ questions, renderAnsweredQuestion }) {
   }
   return (
     <div className="survey">
-      <div>{questions[currentIndexQuestion].texto}</div>
+      <div>{currentQuestion.texto}</div>
       <Votes onClick={answerQuestion} />
     </div>
   );
