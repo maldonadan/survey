@@ -3,10 +3,8 @@ import { useState } from "react";
 const votes = [1, 2, 3, 4, 5];
 
 function Survey({ questions, renderAnsweredQuestion }) {
-  const [currentIndexQuestion, setCurrentIndexQuestion] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
-  const showNextQuestion = () =>
-    setCurrentIndexQuestion(currentIndexQuestion + 1);
+  const currentIndexQuestion = answeredQuestions.length;
   if (!questions[currentIndexQuestion]) {
     return (
       <div>
@@ -29,7 +27,6 @@ function Survey({ questions, renderAnsweredQuestion }) {
               role="radio"
               name="vote"
               onClick={() => {
-                showNextQuestion();
                 setAnsweredQuestions((answeredQuestions) => [
                   ...answeredQuestions,
                   { vote, question: questions[currentIndexQuestion] },
