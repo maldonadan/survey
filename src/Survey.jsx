@@ -11,19 +11,19 @@ function Survey({ questions, renderAnsweredQuestion }) {
       ...answeredQuestions,
       { vote, question: currentQuestion },
     ]);
-  if (!currentQuestion) {
+  if (currentQuestion) {
     return (
-      <SurveySummary
-        answeredQuestions={answeredQuestions}
-        renderAnsweredQuestion={renderAnsweredQuestion}
-      />
+      <div className="survey">
+        <div>{currentQuestion.texto}</div>
+        <Votes onClick={answerQuestion} />
+      </div>
     );
   }
   return (
-    <div className="survey">
-      <div>{currentQuestion.texto}</div>
-      <Votes onClick={answerQuestion} />
-    </div>
+    <SurveySummary
+      answeredQuestions={answeredQuestions}
+      renderAnsweredQuestion={renderAnsweredQuestion}
+    />
   );
 }
 
