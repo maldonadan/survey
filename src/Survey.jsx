@@ -1,16 +1,10 @@
-import { useState } from "react";
 import Votes from "./Votes";
 import SurveySummary from "./SurveySummary";
+import useQuestions from "./useQuestions";
 
 function Survey({ questions, renderAnsweredQuestion }) {
-  const [answeredQuestions, setAnsweredQuestions] = useState([]);
-  const currentIndexQuestion = answeredQuestions.length;
-  const currentQuestion = questions[currentIndexQuestion];
-  const answerQuestion = (vote) =>
-    setAnsweredQuestions((answeredQuestions) => [
-      ...answeredQuestions,
-      { vote, question: currentQuestion },
-    ]);
+  const { currentQuestion, answerQuestion, answeredQuestions } =
+    useQuestions(questions);
   if (currentQuestion) {
     return (
       <div className="survey">
