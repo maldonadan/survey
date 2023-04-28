@@ -1,10 +1,14 @@
 import { useState } from "react";
-
-const votes = [1, 2, 3, 4, 5];
+import Votes from "./Votes";
 
 function Survey({ questions, renderAnsweredQuestion }) {
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const currentIndexQuestion = answeredQuestions.length;
+  const answerQuestion = (vote) =>
+    setAnsweredQuestions((answeredQuestions) => [
+      ...answeredQuestions,
+      { vote, question: questions[currentIndexQuestion] },
+    ]);
   if (!questions[currentIndexQuestion]) {
     return (
       <div>
@@ -17,25 +21,7 @@ function Survey({ questions, renderAnsweredQuestion }) {
   return (
     <div className="survey">
       <div>{questions[currentIndexQuestion].texto}</div>
-      {votes.map((vote) => (
-        <div key={vote}>
-          <label htmlFor={vote}>
-            {vote}
-            <input
-              id={vote}
-              type="radio"
-              role="radio"
-              name="vote"
-              onClick={() => {
-                setAnsweredQuestions((answeredQuestions) => [
-                  ...answeredQuestions,
-                  { vote, question: questions[currentIndexQuestion] },
-                ]);
-              }}
-            />
-          </label>
-        </div>
-      ))}
+      <Votes onClick={answerQuestion} />
     </div>
   );
 }
