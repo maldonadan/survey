@@ -1,6 +1,6 @@
 function SurveySummary({ answeredQuestions, renderAnsweredQuestion }) {
   return (
-    <div>
+    <div className="survey">
       {answeredQuestions.map((answeredQuestions, index) => (
         <div key={index}>{renderAnsweredQuestion(answeredQuestions)}</div>
       ))}

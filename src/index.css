@@ -25,5 +25,10 @@ code {
 }
 
 .survey {
+  width: 600px;
   height: 400px;
+}
+
+.summary-question {
+  padding: 10px;
 }
