@@ -46,7 +46,7 @@ root.render(
           <Typography variant="h4">
             {answeredQuestion.question.texto}
           </Typography>
-          <Rating value={answeredQuestion.vote} readOnly />
+          <Rating size="large" value={answeredQuestion.vote} readOnly />
         </div>
       )}
     />
