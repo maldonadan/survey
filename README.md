@@ -31,3 +31,14 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### Video demo
+
+
+https://user-images.githubusercontent.com/95499919/235277384-0fe5902d-44f4-4ffd-971e-6fe8804446b3.mp4
+
+
+
+### Test coverage
+![Screenshot 2023-04-28 22:31:44](https://user-images.githubusercontent.com/95499919/235277396-3f2955bc-d4db-4ab2-9bff-8f5918a8878e.png)
+
