@@ -1,5 +1,4 @@
-import { Fade, Typography } from "@mui/material";
-import Votes from "./mui/Votes";
+import { Fade, Rating, Typography } from "@mui/material";
 import SurveySummary from "./SurveySummary";
 import useQuestions from "./useQuestions";
 
@@ -20,7 +19,10 @@ function Survey({ questions, renderAnsweredQuestion }) {
                 }}
               >
                 <Typography variant="h4">{question.texto}</Typography>
-                <Votes onClick={answerQuestion} />
+                <Rating
+                  size="large"
+                  onChange={(_event, vote) => answerQuestion(vote)}
+                />
               </div>
             </Fade>
           );
