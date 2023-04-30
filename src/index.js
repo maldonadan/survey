@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import Rating from "@mui/material/Rating";
 import { Typography } from "@mui/material";
 import "./index.css";
-import Survey from "./Survey";
+import { Survey } from "./Survey";
 
 const questions = {
   preguntas: [

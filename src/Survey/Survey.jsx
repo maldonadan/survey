@@ -1,6 +1,6 @@
 import { Fade, Rating, Typography } from "@mui/material";
 import SurveySummary from "./SurveySummary";
-import useQuestions from "./useQuestions";
+import useQuestions from "./hooks/useQuestions";
 
 function Survey({ questions, renderAnsweredQuestion }) {
   const { currentQuestion, answerQuestion, answeredQuestions } =
@@ -9,15 +9,10 @@ function Survey({ questions, renderAnsweredQuestion }) {
     return (
       <div className="survey">
         {questions.map((question, index) => {
+          const isTheCurrentQuestion = currentQuestion.id === question.id;
           return (
-            <Fade key={index} in={currentQuestion.id === question.id}>
-              <div
-                className="summary-question"
-                style={{
-                  display:
-                    currentQuestion.id === question.id ? "block" : "none",
-                }}
-              >
+            <Fade key={index} in={isTheCurrentQuestion}>
+              <div className="summary-question">
                 <Typography variant="h4">{question.texto}</Typography>
                 <Rating
                   size="large"
